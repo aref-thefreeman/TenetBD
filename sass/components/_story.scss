@@ -1,0 +1,125 @@
+.story{
+	width: 75%; //not giving it 100% width
+	margin: 0 auto; // giving it center alignment
+	box-shadow: 0 3rem 6rem rgba($color-black, .1);
+	background-color: rgba($color-white, .70);
+	border-radius: 3px;
+	padding: 6rem;
+	padding-left: 9rem;
+	font-size: $default-font-size; //this font will then be inherited by others like story__shape, story__text
+
+
+	transform: skewX(-12deg);
+	
+	/*
+
+	 & > *{
+	transform: skewX(12deg);
+	}
+
+	*/
+
+	&__shape{
+		width: 15rem;
+		height: 15rem;
+		float: left;
+
+		//background-color: orangered;
+		//background-image: url(../img/nat-dp2.jpg);
+
+
+
+		//radius= 50% means half of the height and width
+		//circle(radius at position)
+		-webkit-shape-outside: circle(50% at 50% 50%);
+		shape-outside: circle(50% at 50% 50%); //this will not work if it's not float already!!!!
+
+
+
+		-webkit-clip-path: circle(50% at 50% 50%);
+		clip-path: circle(50% at 50% 50%);
+
+
+		transform: translateX(-3rem) skewX(12deg);
+		position: relative;
+
+
+	}
+
+	&__image{
+		height: 100%;
+		transition: all .5s;
+		&--1{
+			transform: translateX(-3rem) scale(1.1);
+		}
+
+		&--2{
+			transform: translateX(0rem) scale(1.1);
+		}
+		
+
+	}
+
+	&__text{
+		transform: skewX(12deg);
+	}
+
+	&__caption{
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform: translate(-50%, 20%);
+		color: $color-white;
+		text-transform: uppercase;
+		font-size: 1.7rem;
+		text-align: center; 
+		opacity: 0;
+		transition: all .5s;
+		backface-visibility: hidden; 
+
+	}
+	//when we hover the story we have diff caption. here it is
+	&:hover &__caption{
+		opacity: 1;
+		transform: translate(-50%, -50%);
+	}
+
+
+	&:hover &__image--1{
+		transform: translateX(-3rem) scale(1);
+		filter: blur(3px) brightness(80%);
+	}
+
+	&:hover &__image--2{
+		transform: translateX(0rem) scale(1);
+		filter: blur(3px) brightness(80%);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
